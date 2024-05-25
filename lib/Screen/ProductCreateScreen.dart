@@ -1,3 +1,4 @@
+import 'package:crud_app/RestAPI/RestClient.dart';
 import 'package:crud_app/Style/Style.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     });
   }
 
-  FormOnSubmit() {
+  FormOnSubmit() async {
     if (FormValues['Img']!.length == 0) {
       ErrorToast('Image Link Required !');
     } else if (FormValues['ProductCode']!.length == 0) {
@@ -37,6 +38,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       ErrorToast('Unit Price Required');
     } else {
       //data rest api
+      await ProductCreateRequest(FormValues);
     }
   }
 
