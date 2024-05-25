@@ -17,6 +17,8 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     "UnitPrice": ""
   };
 
+  bool Loading = false;
+
   InputOnChange(MapKey, Textvalue) {
     setState(() {
       FormValues.update(MapKey, (value) => Textvalue);
@@ -29,7 +31,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     } else if (FormValues['ProductCode']!.length == 0) {
       ErrorToast('Product Code Required');
     } else if (FormValues['ProductName']!.length == 0) {
-      ErrorToast('Product Name Required ');
+      ErrorToast('Product Name Required');
     } else if (FormValues['Qty']!.length == 0) {
       ErrorToast('Product Qty Required');
     } else if (FormValues['TotalPrice']!.length == 0) {
@@ -38,7 +40,14 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       ErrorToast('Unit Price Required');
     } else {
       //data rest api
+
+      setState(() {
+        Loading = true;
+      });
       await ProductCreateRequest(FormValues);
+      setState(() {
+        Loading = false;
+      });
     }
   }
 
@@ -57,103 +66,106 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
         children: [
           ScreenBackground(context),
           Container(
-            child: (SingleChildScrollView(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  TextFormField(
-                    onChanged: (Textvalue) {
-                      InputOnChange("ProductName", Textvalue);
-                    },
-                    decoration: AppInputDecoration('Product Name'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    onChanged: (Textvalue) {
-                      InputOnChange("ProductCode", Textvalue);
-                    },
-                    decoration: AppInputDecoration('Product Code'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    onChanged: (Textvalue) {
-                      InputOnChange("Img", Textvalue);
-                    },
-                    decoration: AppInputDecoration('Product Image'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    onChanged: (Textvalue) {
-                      InputOnChange("UnitPrice", Textvalue);
-                    },
-                    decoration: AppInputDecoration('Unit Price'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    onChanged: (Textvalue) {
-                      InputOnChange("TotalPrice", Textvalue);
-                    },
-                    decoration: AppInputDecoration('Total Price'),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  AppDropDownStyle(
-                    DropdownButton(
-                      value: FormValues['Qty'],
-                      items: [
-                        DropdownMenuItem(
-                          child: Text('Select Qt'),
-                          value: "",
-                        ),
-                        DropdownMenuItem(
-                          child: Text('1 pcs'),
-                          value: "1 pcs",
-                        ),
-                        DropdownMenuItem(
-                          child: Text('2 pcs'),
-                          value: "2 pcs",
-                        ),
-                        DropdownMenuItem(
-                          child: Text('3 pcs'),
-                          value: "3 pcs",
-                        ),
-                        DropdownMenuItem(
-                          child: Text('4 pcs'),
-                          value: "4 pcs",
-                        ),
-                      ],
-                      onChanged: (Textvalue) {
-                        InputOnChange("Qty", Textvalue);
-                      },
-                      underline: Container(),
-                      isExpanded: true,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    child: ElevatedButton(
-                      style: AppButtonStyle(),
-                      onPressed: () {
-                        FormOnSubmit();
-                      },
-                      child: SuccessButtonChild('Submit'),
-                    ),
-                  )
-                ],
-              ),
-            )),
-          )
+              child: Loading
+                  ? (Center(
+                      child: CircularProgressIndicator(),
+                    ))
+                  : ((SingleChildScrollView(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            onChanged: (Textvalue) {
+                              InputOnChange("ProductName", Textvalue);
+                            },
+                            decoration: AppInputDecoration('Product Name'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            onChanged: (Textvalue) {
+                              InputOnChange("ProductCode", Textvalue);
+                            },
+                            decoration: AppInputDecoration('Product Code'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            onChanged: (Textvalue) {
+                              InputOnChange("Img", Textvalue);
+                            },
+                            decoration: AppInputDecoration('Product Image'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            onChanged: (Textvalue) {
+                              InputOnChange("UnitPrice", Textvalue);
+                            },
+                            decoration: AppInputDecoration('Unit Price'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            onChanged: (Textvalue) {
+                              InputOnChange("TotalPrice", Textvalue);
+                            },
+                            decoration: AppInputDecoration('Total Price'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          AppDropDownStyle(
+                            DropdownButton(
+                              value: FormValues['Qty'],
+                              items: [
+                                DropdownMenuItem(
+                                  child: Text('Select Qt'),
+                                  value: "",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('1 pcs'),
+                                  value: "1 pcs",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('2 pcs'),
+                                  value: "2 pcs",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('3 pcs'),
+                                  value: "3 pcs",
+                                ),
+                                DropdownMenuItem(
+                                  child: Text('4 pcs'),
+                                  value: "4 pcs",
+                                ),
+                              ],
+                              onChanged: (Textvalue) {
+                                InputOnChange("Qty", Textvalue);
+                              },
+                              underline: Container(),
+                              isExpanded: true,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            child: ElevatedButton(
+                              style: AppButtonStyle(),
+                              onPressed: () {
+                                FormOnSubmit();
+                              },
+                              child: SuccessButtonChild('Submit'),
+                            ),
+                          )
+                        ],
+                      ),
+                    ))))
         ],
       ),
     );
