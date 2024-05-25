@@ -38,6 +38,7 @@ dependencies:
   http: ^1.2.0
   device_preview: ^1.1.0
   flutter_svg: ^2.0.10+1
+  fluttertoast: ^8.2.5
 
 dev_dependencies:
   flutter_test:

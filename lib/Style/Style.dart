@@ -1,10 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 const colorRed = Color.fromRGBO(231, 28, 36, 1);
 const colorGreen = Color.fromRGBO(33, 191, 115, 1);
 const colorWhite = Color.fromRGBO(255, 255, 255, 1);
 const colorDarkBlue = Color.fromRGBO(44, 62, 80, 1);
+
+void ErrorToast(msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: colorRed,
+      textColor: colorWhite,
+      fontSize: 16.0);
+}
+
+void SuccessToast(msg) {
+  Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: colorGreen,
+      textColor: colorWhite,
+      fontSize: 16.0);
+}
 
 SvgPicture ScreenBackground(context) {
   return SvgPicture.asset(
