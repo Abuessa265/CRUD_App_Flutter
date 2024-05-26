@@ -7,6 +7,14 @@ const colorGreen = Color.fromRGBO(33, 191, 115, 1);
 const colorWhite = Color.fromRGBO(255, 255, 255, 1);
 const colorDarkBlue = Color.fromRGBO(44, 62, 80, 1);
 
+SliverGridDelegateWithFixedCrossAxisCount ProductGridViewStyle() {
+  return SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    mainAxisSpacing: 2,
+    mainAxisExtent: 250,
+  );
+}
+
 void ErrorToast(msg) {
   Fluttertoast.showToast(
       msg: msg,

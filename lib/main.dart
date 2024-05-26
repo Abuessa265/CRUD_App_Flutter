@@ -1,6 +1,8 @@
-import 'package:crud_app/Screen/ProductCreateScreen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+
+import 'Screen/ProductGridViewScreen.dart';
+import 'Style/Style.dart';
 
 void main() {
   runApp(
@@ -17,8 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+        backgroundColor: colorGreen,
+        centerTitle: true,
+      )),
       title: 'Flutter CRUD APP',
-      home: ProductCreateScreen(),
+      home: ProductGridViewScreen(),
     );
   }
 }

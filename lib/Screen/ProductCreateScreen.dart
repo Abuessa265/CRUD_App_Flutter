@@ -59,8 +59,6 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
           'Create Product',
           style: TextStyle(color: colorWhite),
         ),
-        centerTitle: true,
-        backgroundColor: colorGreen,
       ),
       body: Stack(
         children: [
