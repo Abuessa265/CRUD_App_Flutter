@@ -64,7 +64,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => ProductUpdateScreen(productItem)));
+            builder: (builder) => ProductUpdateScreen(productItem)));
   }
 
   @override
@@ -108,11 +108,17 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                                       children: [
                                         Text(ProductList[index]['ProductName']),
                                         SizedBox(
-                                          height: 7,
+                                          height: 3,
                                         ),
-                                        Text("Price: " +
+                                        Text("Unit Price: " +
                                             ProductList[index]['UnitPrice'] +
-                                            "BDT"),
+                                            " BDT"),
+                                        SizedBox(
+                                          height: 3,
+                                        ),
+                                        Text('Total Price: ' +
+                                            ProductList[index]['TotalPrice'] +
+                                            " BDT"),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
