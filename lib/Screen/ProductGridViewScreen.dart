@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../RestAPI/RestClient.dart';
 import '../Style/Style.dart';
 import 'ProductCreateScreen.dart';
+import 'ProductUpdateScreen.dart';
 
 class ProductGridViewScreen extends StatefulWidget {
   const ProductGridViewScreen({super.key});
@@ -59,6 +60,13 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
         });
   }
 
+  GotoUpdate(context, productItem) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ProductUpdateScreen(productItem)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +118,10 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                                               MainAxisAlignment.end,
                                           children: [
                                             OutlinedButton(
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  GotoUpdate(context,
+                                                      ProductList[index]);
+                                                },
                                                 child: Icon(
                                                   CupertinoIcons
                                                       .ellipsis_vertical_circle,
