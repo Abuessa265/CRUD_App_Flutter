@@ -39,8 +39,6 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
     } else if (FormValues['UnitPrice']!.length == 0) {
       ErrorToast('Unit Price Required');
     } else {
-      //data rest api
-
       setState(() {
         Loading = true;
       });

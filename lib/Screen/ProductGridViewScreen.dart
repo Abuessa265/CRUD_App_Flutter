@@ -72,7 +72,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'List Product',
+          'Product List',
           style: TextStyle(color: colorWhite),
         ),
       ),
