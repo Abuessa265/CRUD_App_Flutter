@@ -142,6 +142,7 @@ class _ProductGridViewScreenState extends State<ProductGridViewScreen> {
                                                   DeleteItem(ProductList[index]
                                                       ['_id']);
                                                 },
+                                                //
                                                 child: Icon(
                                                   CupertinoIcons.delete,
                                                   color: colorRed,
